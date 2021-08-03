@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+	<script>document.write('<script src="//' + (location.host || 'localhost').split(':')[0] + ':35929/livereload.js?snipver=1"></' + 'script>')</script><script>document.addEventListener('LiveReloadDisconnect', function() { setTimeout(function() { window.location.reload(); }, 500); })</script></body>
+	<script>
+		function getDate() {
+			// 1. 创建 XHR 对象
+			var xhr = new XMLHttpRequest()
+			// 2. 调用 open 函数，指定 请求方式 与 URL地址
+			xhr.open('GET', 'http://www.liulongbin.top:3006/api/getbooks')
+			// 3. 调用 send 函数，发起 Ajax 请求
+			xhr.send()
+			// 4. 监听 onreadystatechange 事件
+			xhr.onreadystatechange = function() {
+				// 4.1 监听 xhr 对象的请求状态 readyState ；与服务器响应的状态 status
+				if (xhr.readyState === 4 && xhr.status === 200) {
+					// 4.2 打印服务器响应回来的数据
+					//console.log(xhr.responseText);
+					console.log(JSON.parse(xhr.responseText));
+				}
+			}
+		}
+		getDate();
+	</script>
+</html>
